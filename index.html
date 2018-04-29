@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDCegwEgA5Ch5SQ0RPshr6MJH2_yGtQcnA",
+    authDomain: "todoapp-555.firebaseapp.com",
+    databaseURL: "https://todoapp-555.firebaseio.com",
+    projectId: "todoapp-555",
+    storageBucket: "todoapp-555.appspot.com",
+    messagingSenderId: "895329864038"
+  };
+  firebase.initializeApp(config);
+</script>
+<body>
+            <h1>to do app</h1>
+            <div>
+                <form action="#" id="todoForm">
+                    <input type="text" id="todoInput">
+                    <button onclick="add()">click me</button>
+
+                </form>
+                <ol id="todoList">
+
+                </ol>
+            </div>
+</body>
+    <script>
+                function add(){
+                    var a = document.getElementById("todoInput").value;
+                    var n = document.createTextNode(a);
+                    var c =document.createElement("li");
+                    var t = document.getElementById("todoList");
+                    var obj = {
+                        todoInput: n.value,
+                    }
+                    
+                    t.appendChild(c);
+                    c.appendChild(n);
+                    firebase.database().ref('/').child('value').push(n);
+                    
+                }
+    </script>
+</html>
